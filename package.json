@@ -1,6 +1,6 @@
 {
   "name": "iframe-embed-sdk",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Universal iframe embed SDK with postMessage-based bidirectional communication",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -25,7 +25,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/yuanguandong/iframe-embed-sdk"
   },
   "scripts": {
     "build": "tsup",
