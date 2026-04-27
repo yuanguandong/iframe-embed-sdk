@@ -1,6 +1,6 @@
 {
   "name": "iframe-embed-sdk",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Universal iframe embed SDK with postMessage-based bidirectional communication",
   "main": "dist/index.js",
   "module": "dist/index.mjs",

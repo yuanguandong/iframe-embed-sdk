@@ -1,4 +1,4 @@
-export interface AgentClientOptions {
+export interface ClientOptions {
   /**
    * 挂载容器，可以是选择器字符串或 DOM 元素
    */

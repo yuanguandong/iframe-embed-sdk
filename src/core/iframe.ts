@@ -1,6 +1,6 @@
-import { AgentClientOptions } from '../types';
+import { ClientOptions } from '../types';
 
-export function createIframe(options: AgentClientOptions): HTMLIFrameElement {
+export function createIframe(options: ClientOptions): HTMLIFrameElement {
   const { container, baseURL, width = '100%', height = '100%', onReady, onError, ...restParams } = options;
 
   let containerEl: HTMLElement | null = null;
@@ -11,7 +11,7 @@ export function createIframe(options: AgentClientOptions): HTMLIFrameElement {
   }
 
   if (!containerEl) {
-    throw new Error(`Gantang SDK: Cannot find container element.`);
+    throw new Error(`IframeEmbedSDK: Cannot find container element.`);
   }
 
   const iframe = document.createElement('iframe');

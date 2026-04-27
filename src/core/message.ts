@@ -45,7 +45,7 @@ export class Messenger {
 
   public send(type: string, payload?: any) {
     if (!this.iframeWindow) {
-      console.warn('Gantang SDK: iframe is not ready to send messages.');
+      console.warn('IframeEmbedSDK: iframe is not ready to send messages.');
       return;
     }
     const message: Message = { type, payload };
@@ -59,7 +59,7 @@ export class Messenger {
       this.pendingRequests[requestId] = { resolve, reject };
       
       if (!this.iframeWindow) {
-        return reject(new Error('Gantang SDK: iframe is not ready to send requests.'));
+        return reject(new Error('IframeEmbedSDK: iframe is not ready to send requests.'));
       }
       
       const message: Message = { type, payload, requestId };

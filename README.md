@@ -20,15 +20,15 @@ The simplest way to use it requires only a container node and a platform configu
 
 ```tsx
 import { useEffect, useRef } from 'react'
-import { createAgentClient } from 'iframe-embed-sdk'
+import { createClient } from 'iframe-embed-sdk'
 
-export default function AgentPanel() {
+export default function AppPanel() {
   const containerRef = useRef<HTMLDivElement | null>(null)
 
   useEffect(() => {
     if (!containerRef.current) return
 
-    const client = createAgentClient({
+    const client = createClient({
       container: containerRef.current,
       baseURL: 'https://api.your-platform.com',
       // The following are custom pass-through parameters that will be automatically appended to the iframe's URL parameters
@@ -37,11 +37,11 @@ export default function AgentPanel() {
       theme: 'dark', // Any extra parameters
 
       onReady: () => {
-        console.log('Agent Client has loaded and is ready to communicate')
+        console.log('Client has loaded and is ready to communicate')
       },
 
       onError: (err) => {
-        console.error('Agent Client encountered a critical error:', err)
+        console.error('Client encountered a critical error:', err)
       }
     })
 
@@ -121,11 +121,11 @@ async function fetchChartData() {
 
 ## 5. API Reference
 
-### `createAgentClient(options)`
+### `createClient(options)`
 
-Initializes and mounts the iframe, returning an `AgentClient` instance.
+Initializes and mounts the iframe, returning an `Client` instance.
 
-**Parameters (AgentClientOptions):**
+**Parameters (ClientOptions):**
 - `container` (string | HTMLElement): The target DOM element or selector to mount on (Required).
 - `baseURL` (string): The base URL of the target platform (Required).
 - `width` (string): The width of the iframe, default is '100%' (Optional).
@@ -134,7 +134,7 @@ Initializes and mounts the iframe, returning an `AgentClient` instance.
 - `onError` (function): Callback when a core error occurs (Optional).
 - `[key: string]: any`: Any additional custom parameters (such as `configId`, `token`, `theme`, etc.) will be automatically passed to the target iframe as URL Query parameters.
 
-### `AgentClient Instance Methods`
+### `Client Instance Methods`
 
 - `client.patchConfig(payload: object)`: Dynamically override/update configurations at runtime.
 - `client.close()`: Send a close instruction to the inside.

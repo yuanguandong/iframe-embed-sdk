@@ -20,15 +20,15 @@ pnpm add iframe-embed-sdk
 
 ```tsx
 import { useEffect, useRef } from 'react'
-import { createAgentClient } from 'iframe-embed-sdk'
+import { createClient } from 'iframe-embed-sdk'
 
-export default function AgentPanel() {
+export default function AppPanel() {
   const containerRef = useRef<HTMLDivElement | null>(null)
 
   useEffect(() => {
     if (!containerRef.current) return
 
-    const client = createAgentClient({
+    const client = createClient({
       container: containerRef.current,
       baseURL: 'https://api.your-platform.com',
       // 以下为自定义透传参数，会自动拼接到 iframe 的 URL 参数中
@@ -37,11 +37,11 @@ export default function AgentPanel() {
       theme: 'dark', // 任意额外参数
 
       onReady: () => {
-        console.log('Agent Client 已经加载完毕并准备好通信')
+        console.log('Client 已经加载完毕并准备好通信')
       },
 
       onError: (err) => {
-        console.error('Agent Client 发生严重错误:', err)
+        console.error('Client 发生严重错误:', err)
       }
     })
 
@@ -121,11 +121,11 @@ async function fetchChartData() {
 
 ## 五、API 参考 (API Reference)
 
-### `createAgentClient(options)`
+### `createClient(options)`
 
-初始化并挂载 iframe，返回 `AgentClient` 实例。
+初始化并挂载 iframe，返回 `Client` 实例。
 
-**参数 (AgentClientOptions):**
+**参数 (ClientOptions):**
 - `container` (string | HTMLElement): 挂载的目标 DOM 元素或选择器 (必填)。
 - `baseURL` (string): 目标平台的基础 URL (必填)。
 - `width` (string): iframe 的宽度，默认 '100%' (可选)。
@@ -134,7 +134,7 @@ async function fetchChartData() {
 - `onError` (function): 发生核心错误时的回调 (可选)。
 - `[key: string]: any`: 任何额外的自定义参数（如 `configId`、`token`、`theme` 等），都会被自动作为 URL Query 参数透传给目标 iframe。
 
-### `AgentClient 实例方法`
+### `Client 实例方法`
 
 - `client.patchConfig(payload: object)`: 运行时动态覆盖/更新配置。
 - `client.close()`: 向内部发送关闭指令。

@@ -1,12 +1,12 @@
-import { AgentClientOptions, EventHandler } from '../types';
+import { ClientOptions, EventHandler } from '../types';
 import { Messenger } from './message';
 import { createIframe } from './iframe';
 
-export class AgentClient {
+export class Client {
   private iframe: HTMLIFrameElement;
   private messenger: Messenger;
   
-  constructor(options: AgentClientOptions) {
+  constructor(options: ClientOptions) {
     this.iframe = createIframe(options);
     this.messenger = new Messenger(options.baseURL);
 
@@ -57,6 +57,6 @@ export class AgentClient {
   }
 }
 
-export function createAgentClient(options: AgentClientOptions): AgentClient {
-  return new AgentClient(options);
+export function createClient(options: ClientOptions): Client {
+  return new Client(options);
 }
